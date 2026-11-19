@@ -110,3 +110,28 @@
     *, *::before, *::after { transition: none !important; }
   }
 }
+
+/* Project pages */
+@layer components {
+  .project-page { padding: calc(var(--nav-h) + 40px) 0 96px; }
+  .back { display: inline-block; color: var(--muted); text-decoration: none; font-size: 15px; margin-bottom: 40px; }
+  .back:hover { color: var(--text); }
+  .project-head { max-width: 760px; margin-bottom: 56px; }
+  .project-head .tags { color: var(--accent); font-size: 14px; font-weight: 600; margin-bottom: 12px; }
+  .project-head h1 { font-size: clamp(44px, 7vw, 88px); margin-bottom: 24px; }
+  .project-head .summary { font-size: 19px; color: var(--muted); }
+  .project-meta { display: flex; flex-wrap: wrap; gap: 16px 48px; margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border); }
+  .project-meta dt { font-size: 13px; color: var(--muted); }
+  .project-meta dd { font-size: 15px; font-weight: 500; max-width: 40ch; }
+
+  .case-pages { display: grid; gap: 24px; }
+  .case-pages img { width: 100%; height: auto; border-radius: 8px; background: var(--surface); }
+  @media (max-width: 640px) { .case-pages { gap: 12px; } }
+
+  .figma-embed { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; background: var(--surface); }
+  .figma-embed iframe { display: block; width: 100%; height: min(85svh, 820px); border: 0; }
+
+  .next-project { display: flex; flex-direction: column; gap: 8px; margin-top: 96px; padding-top: 40px; border-top: 1px solid var(--border); }
+  .next-project a { text-decoration: none; font-size: clamp(32px, 5vw, 56px); }
+  .next-project a:hover { color: var(--accent); }
+}
