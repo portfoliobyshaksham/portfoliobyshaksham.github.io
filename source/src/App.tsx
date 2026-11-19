@@ -73,29 +73,19 @@ const TUNNEL_IMAGES: TunnelImage[] = [
   ...PROJECTS.slice(3).map((p) => ({ src: p.image, title: p.title, href: p.href })),
 ]
 
-const SKILLS = ["UI/UX Design", "Graphic Design", "User Research & Analysis", "Wireframing & Prototyping", "Video Editing"]
-const TOOLS = ["Figma", "Premiere Pro", "Photoshop", "Illustrator", "AutoCAD"]
-const INTERESTS = ["Fitness & active lifestyle", "Design & digital products", "Video editing", "Sports", "Content creation"]
-
-function Chips({ items, label }: { items: string[]; label: string }) {
-  return (
-    <ul className="chips" aria-label={label}>
-      {items.map((i) => (
-        <li key={i}>{i}</li>
-      ))}
-    </ul>
-  )
-}
+const SKILLS = "UI/UX Design, Graphic Design, User Research & Analysis, Wireframing & Prototyping, Video Editing"
+const TOOLS = "Figma, Premiere Pro, Photoshop, Illustrator, AutoCAD"
+const INTERESTS = "Fitness & active lifestyle, design & digital products, video editing, sports, content creation"
 
 export default function App() {
   return (
     <>
-      <header>
+      <header className="site-header">
         <nav className="wrap" aria-label="Main">
           <a className="logo" href="#top">SHAKSHAM</a>
           <ul>
-            <li><a href="#about">About</a></li>
             <li><a href="#work">Work</a></li>
+            <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
         </nav>
@@ -114,24 +104,43 @@ export default function App() {
           }
           subtitle={
             <>
-              Meet <strong className="font-semibold text-white">Shaksham Sinha</strong> — B.Des Experience Design, NIFT Mumbai.
-              UI / UX · Video Editing · Branding.
+              I'm <strong className="font-semibold text-white">Shaksham Sinha</strong>, an Experience Design student at NIFT Mumbai working in UI/UX, video editing and branding.
             </>
           }
           actions={
             <>
               <a className="btn btn-primary" href="#work">View my work</a>
-              <a className="btn btn-secondary" href={RESUME_URL} target="_blank" rel="noopener">Download resume</a>
+              <a className="btn btn-secondary" href={RESUME_URL} target="_blank" rel="noopener">Resume</a>
             </>
           }
-          scrollPrompt="Scroll to explore"
+          scrollPrompt="Scroll"
         />
+
+        {/* WORK */}
+        <section id="work" className="page-section">
+          <div className="wrap">
+            <h2 className="display">Work</h2>
+            <div className="work-grid">
+              {PROJECTS.map((p) => (
+                <a key={p.title} className="project" href={p.href} target="_blank" rel="noopener">
+                  <img src={p.image} width={p.width} height={p.height} alt={p.alt} loading="lazy" />
+                  <div className="info">
+                    <div>
+                      <h3>{p.title}</h3>
+                      <p className="tags">{p.tags}</p>
+                    </div>
+                    <span className="open">{p.linkLabel}</span>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
 
         {/* ABOUT */}
         <section id="about" className="page-section">
           <div className="wrap">
-            <div className="section-num"><span className="label">01.</span><span className="label muted">(About Me)</span></div>
-            <h2 className="display">About Me</h2>
+            <h2 className="display">About</h2>
             <div className="about-grid">
               <div className="about-photo">
                 <img src="/images/about.webp" width={900} height={1055} alt="Black and white portrait of Shaksham Sinha" loading="lazy" />
@@ -142,58 +151,39 @@ export default function App() {
                   <p className="muted">I focus on combining functionality with aesthetics to create meaningful user experiences. Alongside design, my involvement in sports and fitness has developed discipline, consistency, and a results-driven mindset, which I apply to meet deadlines, adapt quickly, and continuously improve.</p>
                 </div>
 
-                <div className="facts">
+                <dl className="facts">
                   <div className="fact">
-                    <span className="label">Education</span>
-                    <p><strong>National Institute of Fashion Technology, Mumbai</strong>B.Des in Experience Design</p>
-                    <a className="btn btn-secondary" href={RESUME_URL} target="_blank" rel="noopener">View resume</a>
-                  </div>
-                  <div className="fact">
-                    <span className="label">Achievements</span>
-                    <ul>
-                      <li><strong>Sports Club President</strong>NIFT Mumbai (2026 – Present)</li>
-                      <li><strong>Sports Club Secretary</strong>NIFT Mumbai (2025 – 2026)</li>
-                      <li><strong>Team Head &amp; Event Coordinator</strong>NIFT International Conference</li>
-                    </ul>
-                  </div>
-                  <div className="fact wide">
-                    <span className="label">Skills</span>
-                    <Chips items={SKILLS} label="Skills" />
+                    <dt>Education</dt>
+                    <dd>
+                      National Institute of Fashion Technology, Mumbai
+                      <div className="sub">B.Des in Experience Design</div>
+                      <a className="btn btn-secondary" href={RESUME_URL} target="_blank" rel="noopener">View resume</a>
+                    </dd>
                   </div>
                   <div className="fact">
-                    <span className="label">Tools</span>
-                    <Chips items={TOOLS} label="Tools" />
+                    <dt>Achievements</dt>
+                    <dd>
+                      <ul>
+                        <li>Sports Club President, NIFT Mumbai <span className="sub">(2026 – present)</span></li>
+                        <li>Sports Club Secretary, NIFT Mumbai <span className="sub">(2025 – 2026)</span></li>
+                        <li>Team Head &amp; Event Coordinator, NIFT International Conference</li>
+                      </ul>
+                    </dd>
                   </div>
                   <div className="fact">
-                    <span className="label">Interests</span>
-                    <Chips items={INTERESTS} label="Interests" />
+                    <dt>Skills</dt>
+                    <dd>{SKILLS}</dd>
                   </div>
-                </div>
+                  <div className="fact">
+                    <dt>Tools</dt>
+                    <dd>{TOOLS}</dd>
+                  </div>
+                  <div className="fact">
+                    <dt>Interests</dt>
+                    <dd>{INTERESTS}</dd>
+                  </div>
+                </dl>
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* WORK */}
-        <section id="work" className="page-section">
-          <div className="wrap">
-            <div className="section-num"><span className="label">02.</span><span className="label muted">(Work)</span></div>
-            <h2 className="display">Selected Work</h2>
-            <div className="work-grid">
-              {PROJECTS.map((p) => (
-                <a key={p.title} className="project" href={p.href} target="_blank" rel="noopener">
-                  <div className="thumb">
-                    <img src={p.image} width={p.width} height={p.height} alt={p.alt} loading="lazy" />
-                  </div>
-                  <div className="info">
-                    <div>
-                      <h3>{p.title}</h3>
-                      <p className="tags">{p.tags}</p>
-                    </div>
-                    <span className="open">{p.linkLabel} ↗</span>
-                  </div>
-                </a>
-              ))}
             </div>
           </div>
         </section>
@@ -201,25 +191,16 @@ export default function App() {
         {/* CONTACT */}
         <section id="contact" className="page-section contact">
           <div className="wrap">
-            <div className="section-num" style={{ justifyContent: "center" }}>
-              <span className="label">03.</span><span className="label muted">(Contact me)</span>
-            </div>
             <h2 className="display">Let’s Work Together</h2>
             <p className="muted">I am currently seeking internship opportunities where I can contribute, learn, and grow while adding value through thoughtful and impactful design.</p>
-            <div className="actions">
-              <a className="btn btn-primary" href={EMAIL_URL}>Contact now</a>
-              <a className="btn btn-secondary" href={RESUME_URL} target="_blank" rel="noopener">Download resume</a>
-            </div>
-            <a className="email" href={EMAIL_URL}>sinhashaksham9431@gmail.com</a>
+            <a className="btn btn-primary" href={EMAIL_URL}>Email me</a>
+            <p className="address">sinhashaksham9431@gmail.com</p>
           </div>
         </section>
       </main>
 
       <footer>
-        <div className="wrap">
-          <span>© {new Date().getFullYear()} Shaksham Sinha</span>
-          <span>UI / UX · Video Editing · Branding</span>
-        </div>
+        <div className="wrap">© {new Date().getFullYear()} Shaksham Sinha</div>
       </footer>
     </>
   )

@@ -131,18 +131,13 @@ function TunnelCard({ card, progress, pointer, total, stage }: TunnelCardProps) 
     );
 
     const inner = (
-        <div className="group relative h-full w-full overflow-hidden rounded-2xl bg-neutral-900 shadow-2xl shadow-black/90 ring-1 ring-white/15 transition-all duration-500 hover:ring-[#d1e1e8]/70">
+        <div className="h-full w-full overflow-hidden rounded-xl bg-neutral-900 shadow-2xl shadow-black/80 ring-1 ring-white/15 transition-shadow duration-150 hover:ring-[#d1e1e8]">
             <img
                 src={card.item.src}
-                alt=""
+                alt={card.item.href ? "" : card.item.title}
                 draggable={false}
-                className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+                className="h-full w-full object-cover"
             />
-            <div className="absolute inset-0 flex items-end bg-gradient-to-t from-black/80 via-black/10 to-transparent p-4 sm:p-5">
-                <span className="font-mono text-xs uppercase tracking-widest text-white/95 drop-shadow-md sm:text-sm">
-                    {card.item.title}
-                </span>
-            </div>
         </div>
     );
 
@@ -157,7 +152,7 @@ function TunnelCard({ card, progress, pointer, total, stage }: TunnelCardProps) 
                     target="_blank"
                     rel="noopener"
                     aria-label={`${card.item.title} (opens in a new tab)`}
-                    className="block h-full w-full rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#d1e1e8]"
+                    className="block h-full w-full rounded-xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#d1e1e8]"
                 >
                     {inner}
                 </a>
@@ -189,7 +184,7 @@ export default function PerspectiveTunnelHero({
     ),
     subtitle = "Scroll to fly through the spatial 3D corridor.",
     actions,
-    scrollPrompt = "Scroll to Explore",
+    scrollPrompt = "Scroll",
 }: PerspectiveTunnelHeroProps) {
     const sectionRef = useRef<HTMLElement>(null);
     const reduce = useReducedMotion();
@@ -228,24 +223,16 @@ export default function PerspectiveTunnelHero({
             className={reduce ? "relative h-[100svh]" : "relative h-[320svh]"}
         >
             <div
-                className="sticky top-0 flex h-[100svh] w-full select-none items-center justify-center overflow-hidden bg-[#111111] text-white"
+                className="sticky top-0 isolate z-0 flex h-[100svh] w-full select-none items-center justify-center overflow-hidden bg-[#111111] pt-16 text-white"
                 style={{ perspective: stage.isMobile ? "900px" : "1200px", transformStyle: "preserve-3d" }}
             >
-                {/* Background grid & glow */}
-                <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(#2a2f36_1px,transparent_1px)] [background-size:28px_28px] [mask-image:radial-gradient(ellipse_70%_70%_at_50%_50%,#000_60%,transparent_100%)] opacity-70" />
-                <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(209,225,232,0.10)_0%,transparent_70%)]" />
-
-                {/* Depth ring guides */}
-                <div className="pointer-events-none absolute h-[48vmin] w-[48vmin] rounded-full border border-[#d1e1e8]/15" />
-                <div className="pointer-events-none absolute h-[76vmin] w-[76vmin] rounded-full border border-dashed border-white/10" />
-
                 {/* Central typography */}
                 <motion.div
                     style={{ scale: titleScale, opacity: titleOpacity }}
                     className="relative z-0 flex max-w-3xl flex-col items-center px-6 text-center"
                 >
                     {eyebrow && (
-                        <p className="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-[#d1e1e8] sm:text-sm">{eyebrow}</p>
+                        <p className="mb-4 text-sm font-semibold uppercase tracking-[0.12em] text-[#d1e1e8]">{eyebrow}</p>
                     )}
                     <h1 className="font-[Anton,Impact,sans-serif] text-5xl uppercase leading-[0.95] tracking-[0.01em] text-white sm:text-7xl md:text-8xl">
                         {title}
@@ -259,10 +246,9 @@ export default function PerspectiveTunnelHero({
                     <motion.div
                         aria-hidden="true"
                         style={{ opacity: promptOpacity }}
-                        className="pointer-events-none absolute bottom-8 z-20 flex flex-col items-center gap-2 font-mono text-xs uppercase tracking-[0.3em] text-white/60"
+                        className="pointer-events-none absolute bottom-8 z-20 text-sm text-white/60"
                     >
-                        <span>{scrollPrompt}</span>
-                        <div className="h-6 w-px bg-gradient-to-b from-[#d1e1e8] to-transparent" />
+                        {scrollPrompt} ↓
                     </motion.div>
                 )}
 
