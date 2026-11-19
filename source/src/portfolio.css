@@ -135,3 +135,4 @@
   .next-project a { text-decoration: none; font-size: clamp(32px, 5vw, 56px); }
   .next-project a:hover { color: var(--accent); }
 }
+@layer components { .project-links { margin-top: 28px; } }

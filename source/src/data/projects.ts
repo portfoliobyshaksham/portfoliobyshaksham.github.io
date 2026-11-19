@@ -17,6 +17,8 @@ export interface Project {
   cover: { src: string; width: number; height: number; alt: string }
   summary: string
   meta: { label: string; value: string }[]
+  /** Buttons shown under the description, e.g. Figma prototypes. */
+  links?: { label: string; href: string }[]
   /** Case-study pages rendered as images (from the original PDF). */
   pages: ProjectPageImage[]
   /** Interactive Figma prototype, embedded on the page. */
@@ -45,6 +47,16 @@ export const PROJECTS: Project[] = [
       { label: "Type", value: "Industry internship" },
       { label: "Role", value: "UI/UX & Digital Product Design" },
       { label: "Duration", value: "8 weeks · 2026" },
+    ],
+    links: [
+      {
+        label: "Dr Store prototype",
+        href: "https://www.figma.com/proto/kNtmYgn2wjABjx95UMcokW/internship?page-id=0%3A1&node-id=1016-10719&viewport=-16258%2C334%2C0.2&t=cAg316ngK69dXqXl-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=1016%3A10719",
+      },
+      {
+        label: "My Tracky prototype",
+        href: "https://www.figma.com/proto/kNtmYgn2wjABjx95UMcokW/internship?page-id=0%3A1&node-id=556-6381&viewport=-7215%2C397%2C0.11&t=EuUoNWHxhntjyVmY-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=556%3A6381",
+      },
     ],
     pages: pagesFor("drstore"),
   },

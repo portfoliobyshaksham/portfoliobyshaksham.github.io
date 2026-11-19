@@ -18,6 +18,21 @@ export default function ProjectPage({ project }: { project: Project }) {
           <p className="tags">{project.tags}</p>
           <h1 className="display">{project.title}</h1>
           <p className="summary">{project.summary}</p>
+          {project.links && project.links.length > 0 && (
+            <div className="actions project-links">
+              {project.links.map((l, i) => (
+                <a
+                  key={l.href}
+                  className={i === 0 ? "btn btn-primary" : "btn btn-secondary"}
+                  href={l.href}
+                  target="_blank"
+                  rel="noopener"
+                >
+                  {l.label} ↗
+                </a>
+              ))}
+            </div>
+          )}
           <dl className="project-meta">
             {project.meta.map((m) => (
               <div key={m.label}>
