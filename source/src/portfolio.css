@@ -146,3 +146,11 @@
   .site-header ul a[aria-current="page"] { color: var(--text); }
   footer { position: relative; z-index: 1; background: var(--bg); }
 }
+
+/* Work page: folder grid. Opened folders fan their files upward, so rows need headroom. */
+@layer components {
+  .work-intro { font-size: 18px; margin-top: -32px; margin-bottom: 160px; }
+  .folder-grid { display: grid; justify-items: center; row-gap: 180px; column-gap: 48px; padding-bottom: 32px; }
+  @media (min-width: 820px) { .folder-grid { grid-template-columns: repeat(2, max-content); justify-content: center; } }
+  @media (min-width: 1500px) { .folder-grid { grid-template-columns: repeat(4, max-content); } }
+}

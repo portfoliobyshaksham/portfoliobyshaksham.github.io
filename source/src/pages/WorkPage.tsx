@@ -1,31 +1,110 @@
-import { useEffect } from "react"
-import { Component as HorizonHeroSection, type HorizonSection } from "@/components/ui/horizon-hero-section"
+import { useEffect, useState } from "react"
+import GlassFolder, { type ArtPreset, type FolderFile } from "@/components/ui/glass-folder-cards"
 import { PROJECTS, projectUrl } from "@/data/projects"
 
-// Each project becomes one scroll section of the Horizon scene.
-const SECTIONS: HorizonSection[] = PROJECTS.map((p, i) => ({
-  id: p.slug,
-  eyebrow: `${String(i + 1).padStart(2, "0")} — ${p.meta[0]?.value ?? ""}`,
-  title: p.title,
-  tags: p.tags,
-  body: p.summary,
-  image: { src: p.cover.src, width: p.cover.width, height: p.cover.height, alt: p.cover.alt },
-  href: projectUrl(p),
-  cta: "View project",
-}))
+const bySlug = (slug: string) => PROJECTS.find((p) => p.slug === slug)!
+
+/** A project as a file in a folder: its cover, opening its page on this site. */
+const projectFile = (slug: string, meta: string): FolderFile => {
+  const p = bySlug(slug)
+  return { name: p.title, meta, image: p.cover.src, href: projectUrl(p) }
+}
+
+const graphic = bySlug("graphic-design")
+const poster = (page: string, name: string, meta: string): FolderFile => ({
+  name,
+  meta,
+  image: `/projects/graphic/${page}.webp`,
+  href: projectUrl(graphic),
+})
+
+interface Folder {
+  label: string
+  meta: string
+  art: ArtPreset
+  files: FolderFile[]
+}
+
+// The last file in each list sits at the front of the stack.
+const FOLDERS: Folder[] = [
+  {
+    label: "UI/UX",
+    meta: "3 projects",
+    art: "dusk",
+    files: [
+      projectFile("muscle-mapping", "iOS app"),
+      projectFile("ixigo-redesign", "Prototype"),
+      projectFile("dr-store", "Internship"),
+    ],
+  },
+  {
+    label: "Branding",
+    meta: "1 project",
+    art: "ember",
+    files: [projectFile("soap-packaging-redesign", "Packaging")],
+  },
+  {
+    label: "Product Design",
+    meta: "1 project",
+    art: "verdant",
+    files: [projectFile("sbd-utility-bag", "Carry system")],
+  },
+  {
+    label: "Graphics",
+    meta: "5 posters",
+    art: "aurora",
+    files: [
+      poster("07", "Brand New Day", "Film concept"),
+      poster("06", "Messi 10", "Sports"),
+      poster("05", "Consistency", "Motivation"),
+      poster("04", "BMW M4", "Automotive"),
+      poster("03", "Nritya", "Cultural"),
+    ],
+  },
+]
+
+/** Folders are 340px wide, narrower on small phones. */
+function useFolderWidth() {
+  const calc = () => Math.min(340, (typeof window === "undefined" ? 1280 : window.innerWidth) - 48)
+  const [width, setWidth] = useState(calc)
+  useEffect(() => {
+    const onResize = () => setWidth(calc())
+    window.addEventListener("resize", onResize)
+    return () => window.removeEventListener("resize", onResize)
+  }, [])
+  return width
+}
 
 export default function WorkPage() {
+  const width = useFolderWidth()
+
   useEffect(() => {
     document.title = "Work — Shaksham Sinha"
   }, [])
 
   return (
-    <main>
-      <HorizonHeroSection
-        title="WORK"
-        subtitle={["UI/UX, branding, packaging", "and graphic design — scroll through"]}
-        sections={SECTIONS}
-      />
+    <main className="standalone-page">
+      <div className="wrap">
+        <h1 className="display page-title">Work</h1>
+        <p className="work-intro muted">Open a folder to see the projects inside, then pick one to view it.</p>
+        <div className="folder-grid">
+          {FOLDERS.map((f, i) => (
+            <GlassFolder
+              key={f.label}
+              label={f.label}
+              meta={f.meta}
+              tone="dark"
+              art={f.art}
+              seed={i * 7 + 3}
+              files={f.files}
+              maxVisible={5}
+              action="none"
+              width={width}
+              appearDelay={i * 140}
+            />
+          ))}
+        </div>
+      </div>
     </main>
   )
 }

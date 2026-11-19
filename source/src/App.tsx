@@ -1,12 +1,9 @@
-import { lazy, Suspense } from "react"
 import { SiteFooter, SiteHeader, type Route } from "@/components/site-chrome"
 import { PROJECTS } from "@/data/projects"
 import AboutPage from "@/pages/AboutPage"
 import Home from "@/pages/Home"
 import ProjectPage from "@/pages/ProjectPage"
-
-// The Work page carries the 3D scene (three.js), so it loads only when visited.
-const WorkPage = lazy(() => import("@/pages/WorkPage"))
+import WorkPage from "@/pages/WorkPage"
 
 // GitHub Pages serves a copy of index.html at /work/, /about/ and
 // /work/<slug>/ (written by scripts/postbuild.mjs); the path picks the page.
@@ -27,11 +24,7 @@ export default function App() {
       <SiteHeader route={route} />
       {route === "home" && <Home />}
       {route === "about" && <AboutPage />}
-      {route === "work" && (
-        <Suspense fallback={<main className="min-h-[100svh] bg-black" />}>
-          <WorkPage />
-        </Suspense>
-      )}
+      {route === "work" && <WorkPage />}
       {route === "project" && project && <ProjectPage project={project} />}
       <SiteFooter />
     </>
