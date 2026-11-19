@@ -12,7 +12,7 @@ export default function ProjectPage({ project }: { project: Project }) {
   return (
     <main className="project-page">
       <div className="wrap">
-        <a className="back" href="/#work">← All work</a>
+        <a className="back" href="/work/">← All work</a>
 
         <header className="project-head">
           <p className="tags">{project.tags}</p>

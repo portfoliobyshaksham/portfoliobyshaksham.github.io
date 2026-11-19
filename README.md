@@ -5,12 +5,14 @@ Live at: https://portfoliobyshaksham.github.io
 ## How this project is organised
 - `source/` – the React + TypeScript + Tailwind (shadcn structure) project you edit.
   - `source/src/data/projects.ts` – project list: titles, summaries, details.
-  - `source/src/pages/Home.tsx` – home page (hero, work, about, contact).
+  - `source/src/pages/Home.tsx` – home page (hero, featured work, contact).
+  - `source/src/pages/WorkPage.tsx` – all projects (`/work/`), shown with `components/ui/horizon-hero-section.tsx`.
+  - `source/src/pages/AboutPage.tsx` – about page (`/about/`).
   - `source/src/pages/ProjectPage.tsx` – layout of each project page (`/work/<project>/`).
   - `source/public/projects/<project>/` – case-study pages as images.
   - `source/src/components/ui/perspective-tunnel-hero.tsx` – the 3D tunnel hero.
   - `source/public/images/` – images.
-- Repository root (`index.html`, `404.html`, `work/`, `assets/`, `images/`, `projects/`) – the built website GitHub Pages serves. Don't edit by hand.
+- Repository root (`index.html`, `404.html`, `work/`, `about/`, `assets/`, `images/`, `projects/`) – the built website GitHub Pages serves. Don't edit by hand.
 
 ## Updating the site
 ```bash

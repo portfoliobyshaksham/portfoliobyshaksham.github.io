@@ -14,10 +14,24 @@ for (const slug of slugs) {
   mkdirSync(join(root, "work", slug), { recursive: true })
   writeFileSync(join(root, "work", slug, "index.html"), html)
 }
+for (const page of ["work", "about"]) {
+  mkdirSync(join(root, page), { recursive: true })
+  writeFileSync(join(root, page, "index.html"), html)
+}
 writeFileSync(join(root, "404.html"), html)
 
-// Remove build files from earlier builds that index.html no longer uses.
-for (const f of readdirSync(join(root, "assets"))) {
-  if (!html.includes(f)) rmSync(join(root, "assets", f))
+// Remove build files from earlier builds. Keep everything index.html uses,
+// plus files those scripts load later (e.g. the lazily loaded Work page).
+const assetsDir = join(root, "assets")
+const files = readdirSync(assetsDir)
+const keep = new Set(files.filter((f) => html.includes(f)))
+for (let changed = true; changed; ) {
+  changed = false
+  for (const k of [...keep]) {
+    if (!k.endsWith(".js")) continue
+    const code = readFileSync(join(assetsDir, k), "utf8")
+    for (const f of files) if (!keep.has(f) && code.includes(f)) { keep.add(f); changed = true }
+  }
 }
-console.log(`postbuild: wrote ${slugs.length} project pages:`, slugs.join(", "))
+for (const f of files) if (!keep.has(f)) rmSync(join(assetsDir, f))
+console.log(`postbuild: wrote /work/, /about/ and ${slugs.length} project pages:`, slugs.join(", "))

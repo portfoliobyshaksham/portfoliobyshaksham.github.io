@@ -136,3 +136,13 @@
   .next-project a:hover { color: var(--accent); }
 }
 @layer components { .project-links { margin-top: 28px; } }
+
+/* Section heading with a link beside it, standalone pages, current nav item */
+@layer components {
+  .section-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px; margin-bottom: 40px; }
+  .section-head h2.display { margin-bottom: 0; }
+  .standalone-page { padding: calc(var(--nav-h) + 56px) 0 96px; }
+  .page-title { font-size: clamp(48px, 8vw, 96px); margin-bottom: 48px; }
+  .site-header ul a[aria-current="page"] { color: var(--text); }
+  footer { position: relative; z-index: 1; background: var(--bg); }
+}
