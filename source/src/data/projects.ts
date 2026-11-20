@@ -1,6 +1,6 @@
 import pageSizes from "./pages.json"
 
-export const RESUME_URL = "/shaksham-sinha-resume.pdf"
+export const RESUME_URL = "/shaksham-sinha-resume-2026.pdf"
 export const EMAIL = "sinhashaksham9431@gmail.com"
 export const EMAIL_URL = `mailto:${EMAIL}?subject=Hello`
 
