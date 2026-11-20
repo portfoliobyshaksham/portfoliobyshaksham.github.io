@@ -65,14 +65,12 @@ export const PROJECTS: Project[] = [
     title: "ixigo Redesign",
     tags: "UI/UX · App Redesign",
     cover: { src: "/images/ixigo.webp", width: 1200, height: 800, alt: "ixigo app redesign cover" },
-    summary: "A redesign of the ixigo travel app, presented as an interactive prototype. Click through the screens below.",
+    summary: "A redesign of the ixigo travel app.",
     meta: [
       { label: "Type", value: "App redesign" },
       { label: "Tool", value: "Figma" },
     ],
     pages: [],
-    figmaEmbed:
-      "https://embed.figma.com/proto/1XzNJ0oUEDGNMuLQhyZEfF/IXIGO?page-id=0%3A1&node-id=91-23&scaling=scale-down&content-scaling=fixed&embed-host=share",
   },
   {
     slug: "muscle-mapping",
