@@ -14,7 +14,7 @@ for (const slug of slugs) {
   mkdirSync(join(root, "work", slug), { recursive: true })
   writeFileSync(join(root, "work", slug, "index.html"), html)
 }
-for (const page of ["work", "about"]) {
+for (const page of ["work", "about", "contact"]) {
   mkdirSync(join(root, page), { recursive: true })
   writeFileSync(join(root, page, "index.html"), html)
 }
@@ -34,4 +34,4 @@ for (let changed = true; changed; ) {
   }
 }
 for (const f of files) if (!keep.has(f)) rmSync(join(assetsDir, f))
-console.log(`postbuild: wrote /work/, /about/ and ${slugs.length} project pages:`, slugs.join(", "))
+console.log(`postbuild: wrote /work/, /about/, /contact/ and ${slugs.length} project pages:`, slugs.join(", "))

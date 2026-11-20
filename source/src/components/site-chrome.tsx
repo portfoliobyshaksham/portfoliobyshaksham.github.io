@@ -1,4 +1,4 @@
-export type Route = "home" | "work" | "about" | "project"
+export type Route = "home" | "work" | "about" | "contact" | "project"
 
 /** Global navigation (fixed to the top) and footer, shared by every page. */
 export function SiteHeader({ route }: { route: Route }) {
@@ -10,7 +10,7 @@ export function SiteHeader({ route }: { route: Route }) {
         <ul>
           <li><a href="/work/" aria-current={current(["work", "project"])}>Work</a></li>
           <li><a href="/about/" aria-current={current(["about"])}>About</a></li>
-          <li><a href={route === "home" ? "#contact" : "/#contact"}>Contact</a></li>
+          <li><a href="/contact/" aria-current={current(["contact"])}>Contact</a></li>
         </ul>
       </nav>
     </header>
