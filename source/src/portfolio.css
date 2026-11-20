@@ -161,3 +161,12 @@
   .about-short-label { font-size: 14px; font-weight: 600; margin-bottom: 16px; }
   .about-short-text { font-size: 18px; max-width: 56ch; margin-bottom: 28px; }
 }
+
+/* Home: short About me with photo on the left */
+@layer components {
+  .about-short-grid { display: grid; gap: 40px; align-items: center; }
+  @media (min-width: 820px) { .about-short-grid { grid-template-columns: minmax(260px, 0.8fr) 1.2fr; gap: 64px; } }
+  .about-short-photo { border-radius: var(--radius); overflow: hidden; max-width: 420px; }
+  .about-short-photo img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+  @media (max-width: 819px) { .about-short-photo { max-width: 280px; } }
+}

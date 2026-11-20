@@ -24,19 +24,6 @@ export default function Home() {
         }
       />
 
-      {/* ABOUT (short) */}
-      <section id="about-short" className="page-section about-short">
-        <div className="wrap">
-          <p className="about-short-label muted">About me</p>
-          <h2 className="display">Designing experiences that move people.</h2>
-          <p className="about-short-text muted">
-            I'm an Experience Design student at NIFT Mumbai, focused on UI/UX — turning research and user insight into
-            interfaces that are clear, useful and good to look at.
-          </p>
-          <a className="btn btn-secondary" href="/about/">More about me</a>
-        </div>
-      </section>
-
       {/* FEATURED WORK */}
       <section id="featured" className="page-section">
         <div className="wrap">
@@ -57,6 +44,24 @@ export default function Home() {
                 </div>
               </a>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ABOUT (short) */}
+      <section id="about-short" className="page-section about-short">
+        <div className="wrap about-short-grid">
+          <div className="about-short-photo">
+            <img src="/images/about.webp" width={900} height={1055} alt="Black and white portrait of Shaksham Sinha" loading="lazy" />
+          </div>
+          <div>
+          <p className="about-short-label muted">About me</p>
+          <h2 className="display">Designing experiences that move people.</h2>
+          <p className="about-short-text muted">
+            I'm an Experience Design student at NIFT Mumbai, focused on UI/UX — turning research and user insight into
+            interfaces that are clear, useful and good to look at.
+          </p>
+          <a className="btn btn-secondary" href="/about/">More about me</a>
           </div>
         </div>
       </section>
