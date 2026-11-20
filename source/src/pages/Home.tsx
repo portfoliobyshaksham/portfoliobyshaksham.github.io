@@ -9,7 +9,6 @@ export default function Home() {
     <main id="top">
       <DesignerHero
         words={["UI/UX", "Designer"]}
-        quotes={["Designing experiences", "that move people."]}
         person={{ src: "/images/hero-portrait-illustration.webp", width: 1000, height: 1167, alt: "Illustrated portrait of Shaksham Sinha smiling, in a varsity jacket" }}
         apps={HERO_APPS}
         intro={
@@ -24,6 +23,19 @@ export default function Home() {
           </>
         }
       />
+
+      {/* ABOUT (short) */}
+      <section id="about-short" className="page-section about-short">
+        <div className="wrap">
+          <p className="about-short-label muted">About me</p>
+          <h2 className="display">Designing experiences that move people.</h2>
+          <p className="about-short-text muted">
+            I'm an Experience Design student at NIFT Mumbai, focused on UI/UX — turning research and user insight into
+            interfaces that are clear, useful and good to look at.
+          </p>
+          <a className="btn btn-secondary" href="/about/">More about me</a>
+        </div>
+      </section>
 
       {/* FEATURED WORK */}
       <section id="featured" className="page-section">

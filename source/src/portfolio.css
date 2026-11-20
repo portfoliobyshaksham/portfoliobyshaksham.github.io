@@ -154,3 +154,10 @@
   @media (min-width: 820px) { .folder-grid { grid-template-columns: repeat(2, max-content); justify-content: center; } }
   @media (min-width: 1500px) { .folder-grid { grid-template-columns: repeat(4, max-content); } }
 }
+
+/* Home: short About me */
+@layer components {
+  .about-short h2.display { font-size: clamp(36px, 6vw, 72px); max-width: 16ch; margin-bottom: 24px; }
+  .about-short-label { font-size: 14px; font-weight: 600; margin-bottom: 16px; }
+  .about-short-text { font-size: 18px; max-width: 56ch; margin-bottom: 28px; }
+}
