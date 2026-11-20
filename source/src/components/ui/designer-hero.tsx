@@ -15,7 +15,9 @@ export interface HeroApp {
   /** Tile face: background, accent, and the glyph drawn on it. */
   bg: string;
   fg: string;
-  glyph: ReactNode;
+  glyph?: ReactNode;
+  /** A logo image used as the whole tile face, instead of `glyph`. */
+  image?: string;
   /** Final position, as % of the stage from its centre (desktop / phone). */
   at: { x: number; y: number; r: number };
   atMobile: { x: number; y: number; r: number };
@@ -105,7 +107,7 @@ function AppTile({
       style={{ transform, opacity, width: `${size}vmin`, height: `${size}vmin` }}
     >
       <div
-        className="grid h-full w-full place-items-center rounded-[24%]"
+        className="relative grid h-full w-full place-items-center overflow-hidden rounded-[24%]"
         style={{
           background: `linear-gradient(160deg, color-mix(in srgb, ${app.bg} 78%, white) 0%, ${app.bg} 38%, color-mix(in srgb, ${app.bg} 80%, black) 100%)`,
           color: app.fg,
@@ -113,9 +115,17 @@ function AppTile({
         }}
       >
         <span className="sr-only">{app.name}</span>
-        <span aria-hidden="true" className="flex h-[58%] w-[58%] items-center justify-center">
-          {app.glyph}
-        </span>
+        {app.image ? (
+          <>
+            <img src={app.image} alt="" aria-hidden="true" draggable={false} className="absolute inset-0 h-full w-full object-cover" />
+            {/* keep the tile's bevel and highlight over the logo */}
+            <span aria-hidden="true" className="absolute inset-0 rounded-[24%]" style={{ boxShadow: "inset 0 2px 0 rgba(255,255,255,.3), inset 0 -4px 10px rgba(0,0,0,.35)" }} />
+          </>
+        ) : (
+          <span aria-hidden="true" className="flex h-[58%] w-[58%] items-center justify-center">
+            {app.glyph}
+          </span>
+        )}
       </div>
     </motion.div>
   );
