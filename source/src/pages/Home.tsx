@@ -1,39 +1,20 @@
-import PerspectiveTunnelHero, { type TunnelImage } from "@/components/ui/perspective-tunnel-hero"
+import DesignerHero from "@/components/ui/designer-hero"
+import { HERO_APPS } from "@/data/apps"
 import { EMAIL, EMAIL_URL, PROJECTS, RESUME_URL, projectUrl } from "@/data/projects"
 
 const FEATURED = PROJECTS.filter((p) => p.slug === "dr-store" || p.slug === "ixigo-redesign")
-const [drStore, ixigo] = FEATURED
-
-// Cards that fly through the hero tunnel: the two featured projects
-// (covers + Dr Store case-study slides) and two portraits.
-const slide = (n: string) => `/projects/drstore/${n}.webp`
-const TUNNEL_IMAGES: TunnelImage[] = [
-  { src: "/images/hero.webp", title: "Shaksham Sinha" },
-  { src: drStore.cover.src, title: drStore.title, href: projectUrl(drStore) },
-  { src: slide("11"), title: "Dr Store — interactions", href: projectUrl(drStore) },
-  { src: ixigo.cover.src, title: ixigo.title, href: projectUrl(ixigo) },
-  { src: "/images/about.webp", title: "Shaksham Sinha" },
-  { src: slide("14"), title: "Dr Store — components", href: projectUrl(drStore) },
-  { src: slide("06"), title: "Dr Store — device register", href: projectUrl(drStore) },
-  { src: slide("22"), title: "My Tracky — final design", href: projectUrl(drStore) },
-]
 
 export default function Home() {
   return (
     <main id="top">
-      <PerspectiveTunnelHero
-        images={TUNNEL_IMAGES}
-        eyebrow="Design / Fitness Enthusiast"
-        title={
+      <DesignerHero
+        words={["UI/UX", "Designer"]}
+        quotes={["Designing experiences", "that move people."]}
+        person={{ src: "/images/hero-person.webp", width: 487, height: 705, alt: "Shaksham Sinha in a black blazer" }}
+        apps={HERO_APPS}
+        intro={
           <>
-            Designing Experiences
-            <br />
-            That Move People
-          </>
-        }
-        subtitle={
-          <>
-            I'm <strong className="font-semibold text-white">Shaksham Sinha</strong>, an Experience Design student at NIFT Mumbai working in UI/UX, video editing and branding.
+            I'm <strong className="font-semibold text-white">Shaksham Sinha</strong>, a UI/UX designer studying Experience Design at NIFT Mumbai.
           </>
         }
         actions={
@@ -42,7 +23,6 @@ export default function Home() {
             <a className="btn btn-secondary" href={RESUME_URL}>Resume</a>
           </>
         }
-        scrollPrompt="Scroll"
       />
 
       {/* FEATURED WORK */}
