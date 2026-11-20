@@ -33,10 +33,10 @@ const figma = (
  */
 export const HERO_APPS: HeroApp[] = [
   { name: "Figma", bg: "#1e1e1e", fg: "#fff", glyph: figma, size: 12, at: { x: 37, y: -32, r: 9 }, atMobile: { x: -37, y: -36, r: -8 } },
-  { name: "Photoshop", bg: "#001e36", fg: "#31a8ff", glyph: mark("Ps"), size: 13, at: { x: -27, y: 12, r: -12 }, atMobile: { x: 37, y: -36, r: 10 } },
-  { name: "Illustrator", bg: "#330000", fg: "#ff9a00", glyph: mark("Ai"), size: 11, at: { x: 28, y: 15, r: 8 }, atMobile: { x: -38, y: -10, r: 8 } },
-  { name: "After Effects", bg: "#00005b", fg: "#9999ff", glyph: mark("Ae"), size: 11, at: { x: -41, y: 15, r: 10 }, atMobile: { x: 38, y: -23, r: -9 } },
+  { name: "Photoshop", bg: "#001e36", fg: "#31a8ff", glyph: mark("Ps"), size: 13, at: { x: -30, y: 16, r: -12 }, atMobile: { x: 37, y: -36, r: 10 } },
+  { name: "Illustrator", bg: "#330000", fg: "#ff9a00", glyph: mark("Ai"), size: 11, at: { x: 31, y: 6, r: 8 }, atMobile: { x: -38, y: -10, r: 8 } },
+  { name: "After Effects", bg: "#00005b", fg: "#9999ff", glyph: mark("Ae"), size: 11, at: { x: -42, y: 2, r: 10 }, atMobile: { x: 38, y: -23, r: -9 } },
   { name: "Premiere Pro", bg: "#00005b", fg: "#9999ff", glyph: mark("Pr"), size: 11, at: { x: 39, y: 30, r: -10 }, atMobile: { x: 38, y: -10, r: 6 } },
-  { name: "Lightroom", bg: "#001e36", fg: "#31a8ff", glyph: mark("Lr"), size: 9, at: { x: 25, y: 31, r: 6 }, atMobile: { x: -36, y: 3, r: -6 } },
+  { name: "Lightroom", bg: "#001e36", fg: "#31a8ff", glyph: mark("Lr"), size: 9, at: { x: 21, y: -12, r: 6 }, atMobile: { x: -36, y: 3, r: -6 } },
   { name: "AutoCAD", bg: "#c4122f", fg: "#fff", glyph: mark("A"), size: 9, at: { x: -41, y: -12, r: -8 }, atMobile: { x: -38, y: -23, r: 4 } },
 ]

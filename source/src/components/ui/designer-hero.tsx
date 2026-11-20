@@ -200,7 +200,7 @@ export default function DesignerHero({ words, quotes, person, apps, intro, actio
           height={person.height}
           alt={person.alt}
           fetchPriority="high"
-          className="pointer-events-none absolute bottom-0 left-1/2 h-[56svh] w-auto max-w-none -translate-x-1/2 select-none md:h-[84svh]"
+          className="pointer-events-none absolute bottom-0 left-1/2 h-[50svh] w-auto max-w-none -translate-x-1/2 select-none md:h-[68svh]"
           draggable={false}
         />
 
@@ -210,7 +210,7 @@ export default function DesignerHero({ words, quotes, person, apps, intro, actio
         {/* Name and actions */}
         {(intro || actions) && (
           <div className="absolute inset-x-0 bottom-6 z-10 md:inset-x-auto md:bottom-10 md:left-[max(32px,calc((100vw-1120px)/2+32px))]">
-            <div className="mx-4 rounded-xl bg-[#111111]/85 p-4 ring-1 ring-white/10 md:mx-0 md:max-w-[340px] md:bg-transparent md:p-0 md:ring-0">
+            <div className="mx-4 rounded-xl bg-[#111111]/85 p-4 ring-1 ring-white/10 md:mx-0 md:max-w-[280px] md:bg-transparent md:p-0 md:ring-0">
               {intro && <div className="text-[15px] text-white/80 md:text-base">{intro}</div>}
               {actions && <div className="mt-3 flex flex-wrap gap-3">{actions}</div>}
             </div>
