@@ -4,7 +4,7 @@ import { motion, useReducedMotion, useScroll, useSpring, useTransform, type Moti
 import { useEffect, useRef, useState, type ReactNode } from "react";
 
 /*
- * Designer hero: a maroon perspective room, a huge warped title on the back
+ * Designer hero: a dark perspective room, a huge warped title on the back
  * wall, the person cut out in front of it, and the apps they use. As the page
  * scrolls, the app tiles fly out from behind the person to their places.
  * Reduced motion: the tiles are simply shown in place.
@@ -56,7 +56,7 @@ function Room() {
       preserveAspectRatio="none"
       aria-hidden="true"
     >
-      <g fill="none" stroke="rgba(255,236,226,0.10)" strokeWidth="1.5" vectorEffect="non-scaling-stroke">
+      <g fill="none" stroke="rgba(209,225,232,0.09)" strokeWidth="1.5" vectorEffect="non-scaling-stroke">
         {frames.map((f) => (
           <rect key={f} x={800 - 800 * f} y={450 - 450 * f} width={1600 * f} height={900 * f} vectorEffect="non-scaling-stroke" />
         ))}
@@ -144,7 +144,7 @@ export default function DesignerHero({ words, quotes, person, apps, intro, actio
         style={{
           containerType: "size",
           background:
-            "radial-gradient(ellipse 60% 55% at 50% 42%, #8a4a45 0%, #6b302d 38%, #431a1a 70%, #210b0c 100%)",
+            "radial-gradient(ellipse 60% 55% at 50% 42%, #2b3136 0%, #1e2226 38%, #161719 68%, #111111 100%)",
         }}
       >
         <Room />
@@ -152,8 +152,8 @@ export default function DesignerHero({ words, quotes, person, apps, intro, actio
         {/* Back wall title */}
         <h1
           aria-label={line}
-          className="absolute inset-x-0 top-[calc(var(--nav-h)+2svh)] flex flex-col items-center font-[Anton,Impact,sans-serif] uppercase leading-none text-[#ecdccd] md:top-1/2 md:-translate-y-[55%] md:flex-row md:justify-center"
-          style={{ textShadow: "0 10px 40px rgba(40,8,8,.45)" }}
+          className="absolute inset-x-0 top-[calc(var(--nav-h)+2svh)] flex flex-col items-center font-[Anton,Impact,sans-serif] uppercase leading-none text-[#e6edf0] md:top-1/2 md:-translate-y-[55%] md:flex-row md:justify-center"
+          style={{ textShadow: "0 10px 40px rgba(0,0,0,.5)" }}
         >
           {words.map((word, w) => (
             <span key={w} aria-hidden="true" className="flex md:mx-[1.2vw]">
@@ -177,10 +177,10 @@ export default function DesignerHero({ words, quotes, person, apps, intro, actio
         {/* Handwritten quotes */}
         {quotes && (
           <>
-            <p className="pointer-events-none absolute left-[15%] top-[17%] hidden -rotate-[12deg] font-[Caveat,cursive] text-[clamp(20px,2.4vw,34px)] text-[#f3e3d6] md:block">
+            <p className="pointer-events-none absolute left-[15%] top-[17%] hidden -rotate-[12deg] font-[Caveat,cursive] text-[clamp(20px,2.4vw,34px)] text-[#d1e1e8] md:block">
               “{quotes[0]}”
             </p>
-            <p className="pointer-events-none absolute right-[20%] top-[21%] hidden -rotate-[10deg] font-[Caveat,cursive] text-[clamp(20px,2.4vw,34px)] text-[#f3e3d6] md:block">
+            <p className="pointer-events-none absolute right-[20%] top-[21%] hidden -rotate-[10deg] font-[Caveat,cursive] text-[clamp(20px,2.4vw,34px)] text-[#d1e1e8] md:block">
               “{quotes[1]}”
             </p>
           </>
@@ -200,7 +200,7 @@ export default function DesignerHero({ words, quotes, person, apps, intro, actio
           height={person.height}
           alt={person.alt}
           fetchPriority="high"
-          className="pointer-events-none absolute bottom-0 left-1/2 h-[50svh] w-auto max-w-none -translate-x-1/2 select-none md:h-[68svh]"
+          className="pointer-events-none absolute bottom-0 left-1/2 h-[50svh] w-auto max-w-none -translate-x-1/2 select-none md:h-[72svh]"
           draggable={false}
         />
 
