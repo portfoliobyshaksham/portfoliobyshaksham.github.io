@@ -10,7 +10,7 @@ export default function Home() {
       <DesignerHero
         words={["UI/UX", "Designer"]}
         quotes={["Designing experiences", "that move people."]}
-        person={{ src: "/images/hero-person.webp", width: 1000, height: 1167, alt: "Illustrated portrait of Shaksham Sinha smiling, in a varsity jacket" }}
+        person={{ src: "/images/hero-portrait-illustration.webp", width: 1000, height: 1167, alt: "Illustrated portrait of Shaksham Sinha smiling, in a varsity jacket" }}
         apps={HERO_APPS}
         intro={
           <>
