@@ -127,6 +127,8 @@
   .case-pages { display: grid; gap: 24px; }
   .case-pages img { width: 100%; height: auto; border-radius: 8px; background: var(--surface); }
   @media (max-width: 640px) { .case-pages { gap: 12px; } }
+  .case-pages.case-pages-continuous { gap: 0; border-radius: 8px; overflow: hidden; }
+  .case-pages-continuous img { display: block; border-radius: 0; }
 
   .figma-embed { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; background: var(--surface); }
   .figma-embed iframe { display: block; width: 100%; height: min(85svh, 820px); border: 0; }

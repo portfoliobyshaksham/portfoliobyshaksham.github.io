@@ -55,14 +55,14 @@ export default function ProjectPage({ project }: { project: Project }) {
         )}
 
         {project.pages.length > 0 && (
-          <div className="case-pages">
+          <div className={project.continuous ? "case-pages case-pages-continuous" : "case-pages"}>
             {project.pages.map((page, i) => (
               <img
                 key={page.src}
                 src={page.src}
                 width={page.width}
                 height={page.height}
-                alt={`${project.title} case study, page ${i + 1} of ${project.pages.length}`}
+                alt={`${project.title} case study, ${project.continuous ? "part" : "page"} ${i + 1} of ${project.pages.length}`}
                 loading={i < 2 ? "eager" : "lazy"}
                 decoding="async"
               />

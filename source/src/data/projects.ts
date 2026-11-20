@@ -21,6 +21,8 @@ export interface Project {
   links?: { label: string; href: string }[]
   /** Case-study pages rendered as images (from the original PDF). */
   pages: ProjectPageImage[]
+  /** The pages are slices of one long page, so show them joined with no gaps. */
+  continuous?: boolean
   /** Interactive Figma prototype, embedded on the page. */
   figmaEmbed?: string
 }
@@ -70,7 +72,8 @@ export const PROJECTS: Project[] = [
       { label: "Type", value: "App redesign" },
       { label: "Tool", value: "Figma" },
     ],
-    pages: [],
+    pages: pagesFor("ixigo"),
+    continuous: true,
   },
   {
     slug: "muscle-mapping",
